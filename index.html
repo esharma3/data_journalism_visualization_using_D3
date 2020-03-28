@@ -2,61 +2,53 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>D3Times</title>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/d3Style.css">
+    <meta charset="UTF-8">
+    <title>D3Times</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/d3Style.css">
 
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-12 col-md-12" id="header">
-        <h4>Data Journalism and D3</h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-md-12">
-        <div id="scatter">
-          <!-- chart appended here -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-12" id="header">
+                <h3>Data Journalism and D3</h3>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12  col-md-12" id="analysis">
-        <div class="article">
-          <h2>Correlations Discovered Between Health Risks and Age, Income</h2>
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div id="scatter">
+                    <!-- chart appended here -->
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+        <div class="row">
+            <div class="col-xs-12  col-md-12" id="analysis">
+                <div class="article">
+                    <h4>Analysis Report based on correlation between health risks and poverty, age & income</h4>
+                    <p>Poverty and Absence of Healthcare: TX shows the highest percent of people lacking Healthcare (25%) with poverty rate approximating 17.5%. MS and NM have the highest poverty rate of of 22% and 21% respectively but a comparatively lower percentage of Healthcare absence (19% and 16%) as compared to TX. NH has the lowest poverty rate of about 6% and Healthcare Absence Rate of 11.5%. MA has the lowest Healthcare Absence Rate of 4.5% with a poverty rate of 11.8%.</p>
 
-  <!-- Footer-->
-  <div id="footer">
-    <p>The Coding Boot Camp&copy;2016</p>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
-  <script type="text/javascript" src="assets/js/app.js"></script>
+                    <p>Age and Absence of Healthcare: For majority of states, people who are lacking Healthcare fall between 35 to 45 years of age group. For TX with highest Healthcare absence rate of 25% the age group is 34 to 35 years. For MA with lowest poverty rate of 4.5%, the age group lacking Healthcare is 39.5 years.</p>
+
+                    <p>Income and Absence of Healthcare: Median household income for all the states lie between 40k and 75k. MS has the lowest median household income of $40,000 with a poverty rate of 19%. MD has the highest median income of $74,000 with a low poverty rate of 8.5%. MA is performing good in terms of both median income of about $69,000 and a low poverty rate of 4.5%. For TX with highest Healthcare absence rate of 25%, the median income is $54,000.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer-->
+    <div id="footer">
+        <p>University of Texas at Austin (Data Bootcamp)&copy;2020</p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
 
 </body>
 
