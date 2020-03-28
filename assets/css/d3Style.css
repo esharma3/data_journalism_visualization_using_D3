@@ -26,7 +26,9 @@
 /* font size dependent on radius, see app.js */
 .stateText {
   font-family: sans-serif;
-  fill: #fff;
+  font-size: 0.5rem;
+  font-weight: bold;
+  fill: black;
   text-anchor: middle;
 }
 
@@ -50,6 +52,23 @@
   text-transform: capitalize;
   background: rgba(0, 0, 0, 0.8);
   border-radius: 4px;
+}
+
+#scatter {
+  margin-left: 400px;
+}
+
+#analysis {
+  margin: 10px;
+}
+
+#header {
+  background: grey;
+  opacity: 0.8;
+}
+
+h3 {
+  color: black;
 }
 
 /* Mobile Rules */
