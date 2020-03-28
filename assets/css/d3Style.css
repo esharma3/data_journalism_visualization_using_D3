@@ -63,20 +63,17 @@
 }
 
 #header {
-  background: grey;
-  opacity: 0.8;
+  background: #89bdd3;
+  opacity: 0.6;
 }
 
-h3 {
-  color: black;
+h4 {
+  color: grey;
+  font-weight: bold;
 }
 
 /* Mobile Rules */
 @media screen and (max-width: 530px) {
-  .stateText {
-    display: none;
-  }
-
   .aText {
     font-size: 14px;
   }
