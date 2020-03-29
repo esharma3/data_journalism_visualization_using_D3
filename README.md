@@ -18,6 +18,7 @@ The additional labels on the scatter plot have click events that lets the user d
 * HTML - Bootstrap
 * CSS
 
+Access it here - https://esharma3.github.io/data_journalism_visualization_using_D3/index.html
 
 ## Copyright
 
