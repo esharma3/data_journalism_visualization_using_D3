@@ -10,6 +10,14 @@ The additional labels on the scatter plot have click events that lets the user d
 
 * Note: You'll need to use `serve` or `python -m http.server` to run the visualization.
 
+#### Uses:
+SVG
+D3 visualization Library
+JavaScript
+D3.js
+HTML - Bootstrap
+CSS
+
 
 ## Copyright
 
