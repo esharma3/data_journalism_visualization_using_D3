@@ -91,8 +91,8 @@ function renderCircles(circlesGroup, newXScale, newYScale, xAxisLabel, yAxisLabe
 function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisLabel) {
 	circlesText.transition()
 		.duration(1000)
-		.attr('x', d => newXScale(d[xAxisLabel]))
-		.attr('y', d => newYScale(d[yAxisLabel]));
+		.attr("x", d => newXScale(d[xAxisLabel]))
+		.attr("y", d => newYScale(d[yAxisLabel]));
 
 	return textGroup
 
@@ -124,7 +124,7 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 			.call(bottomAxis)
 
 		// appending y axis
-		let yAxis = chartGroup.append('g')
+		let yAxis = chartGroup.append("g")
 			.classed('y-axis', true)
 			.call(leftAxis);
 
@@ -150,7 +150,6 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 			.classed("stateText", true)
 			.attr("x", d => xLinearScale(d[xAxisLabel]))
 			.attr("y", d => yLinearScale(d[yAxisLabel]))
-			.attr('dy', 3)
 			.text(function (d) {
 				return d.abbr
 			})
@@ -175,7 +174,7 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 			.attr("x", 40)
 			.attr("y", 60)
 			.attr("value", "age")
-			.classed('inactive', true)
+			.classed("inactive", true)
 			.text("Age")
 
 		// Median HouseHold Income - x axis 
@@ -184,46 +183,43 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 			.attr("x", 40)
 			.attr("y", 80)
 			.attr("value", "income")
-			.classed('inactive', true)
+			.classed("inactive", true)
 			.text("Median HouseHold Income")
 
 
 		// adding y axis labels 
 		let yLabelsGroup = chartGroup.append('g')
-			.attr('transform', `translate(${0 - margin.left/3}, ${height/2})`);
+			.attr("transform", `translate(${0 - margin.left/4}, ${height/2})`);
 
 		// noHealthCare - y axis
 		let noHealthCareLabel = yLabelsGroup.append("text")
-			.classed('aText', true)
-			.classed('active', true)
-			.attr('x', 0)
-			.attr('y', 0 - 20)
-			.attr('dy', '1em')
-			.attr('transform', 'rotate(-90)')
-			.attr('value', 'noHealthInsurance')
-			.text('Lacking Healthcare (%)');
+			.classed("aText", true)
+			.classed("active", true)
+			.attr("x", 0)
+			.attr("y", 0 - 20)
+			.attr("transform", "rotate(-90)")
+			.attr("value", "noHealthInsurance")
+			.text("Lacking Healthcare (%)");
 
 		// smoker - y axis
-		let smokerLabel = yLabelsGroup.append('text')
-			.classed('aText', true)
-			.classed('inactive', true)
-			.attr('x', 0)
-			.attr('y', 0 - 40)
-			.attr('dy', '1em')
-			.attr('transform', 'rotate(-90)')
-			.attr('value', 'smokes')
-			.text('Smoker (%)');
+		let smokerLabel = yLabelsGroup.append("text")
+			.classed("aText", true)
+			.classed("inactive", true)
+			.attr("x", 0)
+			.attr("y", 0 - 40)
+			.attr("transform", "rotate(-90)")
+			.attr("value", "smokes")
+			.text("Smoker (%)");
 
 		// obese - y axis
-		let obeseLabel = yLabelsGroup.append('text')
-			.classed('aText', true)
-			.classed('inactive', true)
-			.attr('x', 0)
-			.attr('y', 0 - 60)
-			.attr('dy', '1em')
-			.attr('transform', 'rotate(-90)')
-			.attr('value', 'obesity')
-			.text('Obese (%)');
+		let obeseLabel = yLabelsGroup.append("text")
+			.classed("aText", true)
+			.classed("inactive", true)
+			.attr("x", 0)
+			.attr("y", 0 - 60)
+			.attr("transform", "rotate(-90)")
+			.attr("value", "obesity")
+			.text("Obese (%)");
 
 
 		// event listener to call the update functions when a x-axis label is clicked
@@ -242,18 +238,18 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 				)
 				circlesText = renderCirclesText(circlesText, xLinearScale, yLinearScale, xAxisLabel, yAxisLabel);
 
-				if (xAxisLabel === 'poverty') {
-					povertyLabel.classed('active', true).classed('inactive', false);
-					ageLabel.classed('active', false).classed('inactive', true);
-					incomeLabel.classed('active', false).classed('inactive', true);
-				} else if (xAxisLabel === 'age') {
-					povertyLabel.classed('active', false).classed('inactive', true);
-					ageLabel.classed('active', true).classed('inactive', false);
-					incomeLabel.classed('active', false).classed('inactive', true);
+				if (xAxisLabel === "poverty") {
+					povertyLabel.classed("active", true).classed("inactive", false);
+					ageLabel.classed("active", false).classed("inactive", true);
+					incomeLabel.classed("active", false).classed("inactive", true);
+				} else if (xAxisLabel === "age") {
+					povertyLabel.classed("active", false).classed("inactive", true);
+					ageLabel.classed("active", true).classed("inactive", false);
+					incomeLabel.classed("active", false).classed("inactive", true);
 				} else {
-					povertyLabel.classed('active', false).classed('inactive', true);
-					ageLabel.classed('active', false).classed('inactive', true);
-					incomeLabel.classed('active', true).classed('inactive', false);
+					povertyLabel.classed("active", false).classed("inactive", true);
+					ageLabel.classed("active", false).classed("inactive", true);
+					incomeLabel.classed("active", true).classed("inactive", false);
 				}
 			}
 		})
