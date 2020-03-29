@@ -1,31 +1,31 @@
 // creating svg and setting its height and width
-const svgWidth = 900
-const svgHeight = 610
+const svgWidth = 900;
+const svgHeight = 610;
 
 let margin = {
 	top: 30,
 	right: 40,
 	bottom: 110,
 	left: 100
-}
+};
 
-let width = svgWidth - margin.left - margin.right
-let height = svgHeight - margin.top - margin.bottom
+let width = svgWidth - margin.left - margin.right;
+let height = svgHeight - margin.top - margin.bottom;
 
 let svg = d3
 	.select("#scatter")
 	.append("svg")
 	.attr("width", svgWidth)
-	.attr("height", svgHeight)
+	.attr("height", svgHeight);
 
 // creating chart/plot element
 let chartGroup = svg
 	.append("g")
-	.attr("transform", `translate(${margin.left}, ${margin.top})`)
+	.attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // setting initial/default x-axis and y-axis labels (filters) 
-let xAxisLabel = "poverty"
-let yAxisLabel = "noHealthInsurance"
+let xAxisLabel = "poverty";
+let yAxisLabel = "noHealthInsurance";
 
 // function to return updated x scale based on the x-axis label selection
 function xScale(totalData, xAxisLabel) {
@@ -38,7 +38,7 @@ function xScale(totalData, xAxisLabel) {
 		.range([0, width])
 
 	return xLinearScale
-}
+};
 
 //function to return updated y scale based on the y-axis label selection
 function yScale(totalData, yAxisLabel) {
@@ -48,10 +48,10 @@ function yScale(totalData, yAxisLabel) {
 			d3.min(totalData, d => parseInt(d[yAxisLabel]) * 0.8),
 			d3.max(totalData, d => parseInt(d[yAxisLabel]) * 1.1)
 		])
-		.range([height, 0]);
+		.range([height, 0])
 
-	return yLinearScale;
-}
+	return yLinearScale
+};
 
 // function to return updated x-axis based on x scale
 function renderXAxis(newXScale, xAxis) {
@@ -63,18 +63,19 @@ function renderXAxis(newXScale, xAxis) {
 		.call(bottomAxis)
 
 	return xAxis
-}
+};
 
 // function to return updated y-axis based on y scale
 function renderYAxis(newYScale, yAxis) {
 
-	let leftAxis = d3.axisLeft(newYScale);
+	let leftAxis = d3.axisLeft(newYScale)
 	yAxis.transition()
 		.duration(1000)
-		.call(leftAxis);
-	return yAxis;
+		.call(leftAxis)
 
-}
+	return yAxis
+
+};
 
 // function to return updated circles based on a new scale and the x and y axis label selection
 function renderCircles(circlesGroup, newXScale, newYScale, xAxisLabel, yAxisLabel) {
@@ -85,18 +86,17 @@ function renderCircles(circlesGroup, newXScale, newYScale, xAxisLabel, yAxisLabe
 		.attr("cy", d => newYScale(d[yAxisLabel]))
 
 	return circlesGroup
-}
+};
 
 //function for updating state abbreviations based on the x and y axis label selection
 function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisLabel) {
 	circlesText.transition()
 		.duration(1000)
 		.attr("x", d => newXScale(d[xAxisLabel]))
-		.attr("y", d => newYScale(d[yAxisLabel]));
+		.attr("y", d => newYScale(d[yAxisLabel]))
 
-	return textGroup
-
-}
+	return circlesText
+};
 
 // #####################################################################################
 //                            	   Main Script										   #	
@@ -106,22 +106,22 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 
 	d3.csv("data/data.csv").then(totalData => {
 
-		console.log(totalData)
+		console.log(totalData);
 
 		// creating scales
-		let xLinearScale = xScale(totalData, xAxisLabel)
-		let yLinearScale = yScale(totalData, yAxisLabel)
+		let xLinearScale = xScale(totalData, xAxisLabel);
+		let yLinearScale = yScale(totalData, yAxisLabel);
 
 		// creating x and y axis
-		let bottomAxis = d3.axisBottom(xLinearScale)
-		let leftAxis = d3.axisLeft(yLinearScale)
+		let bottomAxis = d3.axisBottom(xLinearScale);
+		let leftAxis = d3.axisLeft(yLinearScale);
 
 		// appending x axis
 		let xAxis = chartGroup
 			.append("g")
 			.classed("x-axis", true)
 			.attr("transform", `translate(0, ${height})`)
-			.call(bottomAxis)
+			.call(bottomAxis);
 
 		// appending y axis
 		let yAxis = chartGroup.append("g")
@@ -139,7 +139,7 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 			.attr("r", 12)
 			.attr("fill", "blue")
 			.attr("opacity", ".4")
-			.classed("stateCircle", true)
+			.classed("stateCircle", true);
 
 		// adding state abbreviations to the circles for the default chart
 		let circlesText = chartGroup
@@ -152,12 +152,12 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 			.attr("y", d => yLinearScale(d[yAxisLabel]))
 			.text(function (d) {
 				return d.abbr
-			})
+			});
 
 		// adding x axis labels 
 		let xLabelsGroup = chartGroup
 			.append("g")
-			.attr("transform", `translate(${width / 2}, ${height + 2})`)
+			.attr("transform", `translate(${width / 2}, ${height + 2})`);
 
 		// Poverty - x axis
 		let povertyLabel = xLabelsGroup
@@ -165,8 +165,9 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 			.attr("x", 40)
 			.attr("y", 40)
 			.attr("value", "poverty")
+			.classed("aText", true)
 			.classed("active", true)
-			.text("In Poverty (%)")
+			.text("In Poverty (%)");
 
 		// Age - x axis
 		let ageLabel = xLabelsGroup
@@ -174,8 +175,9 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 			.attr("x", 40)
 			.attr("y", 60)
 			.attr("value", "age")
+			.classed("aText", true)
 			.classed("inactive", true)
-			.text("Age")
+			.text("Age");
 
 		// Median HouseHold Income - x axis 
 		let incomeLabel = xLabelsGroup
@@ -183,8 +185,9 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 			.attr("x", 40)
 			.attr("y", 80)
 			.attr("value", "income")
+			.classed("aText", true)
 			.classed("inactive", true)
-			.text("Median HouseHold Income")
+			.text("Median HouseHold Income");
 
 
 		// adding y axis labels 
@@ -192,34 +195,37 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 			.attr("transform", `translate(${0 - margin.left/4}, ${height/2})`);
 
 		// noHealthCare - y axis
-		let noHealthCareLabel = yLabelsGroup.append("text")
-			.classed("aText", true)
-			.classed("active", true)
+		let noHealthCareLabel = yLabelsGroup
+			.append("text")
 			.attr("x", 0)
 			.attr("y", 0 - 20)
 			.attr("transform", "rotate(-90)")
 			.attr("value", "noHealthInsurance")
-			.text("Lacking Healthcare (%)");
+			.text("Lacking Healthcare (%)")
+			.classed("aText", true)
+			.classed("active", true);
 
 		// smoker - y axis
-		let smokerLabel = yLabelsGroup.append("text")
-			.classed("aText", true)
-			.classed("inactive", true)
+		let smokerLabel = yLabelsGroup
+			.append("text")
 			.attr("x", 0)
 			.attr("y", 0 - 40)
 			.attr("transform", "rotate(-90)")
 			.attr("value", "smokes")
-			.text("Smoker (%)");
+			.text("Smoker (%)")
+			.classed("aText", true)
+			.classed("inactive", true);
 
 		// obese - y axis
-		let obeseLabel = yLabelsGroup.append("text")
-			.classed("aText", true)
-			.classed("inactive", true)
+		let obeseLabel = yLabelsGroup
+			.append("text")
 			.attr("x", 0)
 			.attr("y", 0 - 60)
 			.attr("transform", "rotate(-90)")
 			.attr("value", "obesity")
-			.text("Obese (%)");
+			.text("Obese (%)")
+			.classed("aText", true)
+			.classed("inactive", true);
 
 
 		// event listener to call the update functions when a x-axis label is clicked
@@ -235,7 +241,8 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 					yLinearScale,
 					xAxisLabel,
 					yAxisLabel
-				)
+				);
+
 				circlesText = renderCirclesText(circlesText, xLinearScale, yLinearScale, xAxisLabel, yAxisLabel);
 
 				if (xAxisLabel === "poverty") {
@@ -250,16 +257,15 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 					povertyLabel.classed("active", false).classed("inactive", true);
 					ageLabel.classed("active", false).classed("inactive", true);
 					incomeLabel.classed("active", true).classed("inactive", false);
-				}
-			}
-		})
+				};
+			};
+		});
 
 		// event listener to call the update functions when a y-axis label is clicked
 		yLabelsGroup.selectAll("text").on("click", function () {
 			let value = d3.select(this).attr("value")
 			if (value !== yAxisLabel) {
 				yAxisLabel = value
-				console.log("y", yAxisLabel)
 				yLinearScale = yScale(totalData, yAxisLabel)
 				yAxis = renderYAxis(yLinearScale, yAxis)
 				circlesGroup = renderCircles(
@@ -268,21 +274,22 @@ function renderCirclesText(circlesText, newXScale, newYScale, xAxisLabel, yAxisL
 					yLinearScale,
 					xAxisLabel,
 					yAxisLabel
-				)
+				);
+
 				circlesText = renderCirclesText(circlesText, xLinearScale, yLinearScale, xAxisLabel, yAxisLabel);
 
-				if (yAxisLabel === 'obesity') {
-					obeseLabel.classed('active', true).classed('inactive', false);
-					smokerLabel.classed('active', false).classed('inactive', true);
-					noHealthCareLabel.classed('active', false).classed('inactive', true);
-				} else if (yAxisLabel === 'smoker') {
-					obeseLabel.classed('active', false).classed('inactive', true);
-					smokerLabel.classed('active', true).classed('inactive', false);
-					noHealthCareLabel.classed('active', false).classed('inactive', true);
+				if (yAxisLabel === "obesity") {
+					noHealthCareLabel.classed("active", false).classed("inactive", true);
+					smokerLabel.classed("active", false).classed("inactive", true);
+					obeseLabel.classed("active", true).classed("inactive", false);
+				} else if (yAxisLabel === "smokes") {
+					noHealthCareLabel.classed("active", false).classed("inactive", true);
+					smokerLabel.classed("active", true).classed("inactive", false);
+					obeseLabel.classed("active", false).classed("inactive", true);
 				} else {
-					obeseLabel.classed('active', false).classed('inactive', true);
-					smokerLabel.classed('active', false).classed('inactive', true);
-					noHealthCareLabel.classed('active', true).classed('inactive', false);
+					noHealthCareLabel.classed("active", true).classed("inactive", false);
+					smokerLabel.classed("active", false).classed("inactive", true);
+					obeseLabel.classed("active", false).classed("inactive", true);
 				}
 			}
 		})
